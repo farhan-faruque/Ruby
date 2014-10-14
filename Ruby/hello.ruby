@@ -1,8 +1,8 @@
 
-puts -123.abs
-
-def say_goodnight(name)
-   "Good night "+ name;
+def call_block
+  puts "start of method"
+  yield
+  puts 'end of method'
 end
 
-puts say_goodnight "farhan"
+call_block { puts 'hi'}

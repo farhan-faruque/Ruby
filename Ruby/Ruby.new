@@ -1,0 +1,141 @@
+# Ruby Is an Object-Oriented Language
+
+Everything in Ruby is object
+# puts -1234.abs #print 1234
+# puts 4.even? # print true
+
+# if a method have one parameter then its not mandatory to write first bracket after function name
+e.g puts 'hello' => puts("Hello")
+
+def say_goodnight(name)
+  return "Good night "+ name;
+end
+puts say_goodnight "farhan"
+
+#String Double Quote / Single Quote
+ - In the single-quoted case, Ruby does very little.
+ - In the double-quoted case, Ruby does more work.
+
+  When a string containing
+a newline is output, that newline becomes a line break:
+puts "And good night,\nGrandma"
+
+  The second thing that Ruby does with double-quoted strings is expression interpolation.
+
+  def say_goodnight(name)
+    result = "Good night, #{name}"
+    return result
+  end
+
+# Global variables are prefixed with a dollar sign ($), and instance variables begin with an “at” sign (@).
+Class variables start with two “at” signs (@@).
+
+Arrays and Hashes
+------------------
+ - Ruby’s arrays and hashes are indexed collections
+ - With arrays, the key is an integer, whereas hashes support any object as a key
+ - Any particular array or hash can hold objects of differing types;
+
+  a = [ 1, 'cat',3.14 ] # array with three elements
+  puts "The first # set the third
+ - A hash literal uses braces rather than square brackets.
+ - The literal must supply two objects for every entry: one for the key, the other for the value.
+ - The key and value are normally separated by =>.
+  inst_section = {
+    'name' => 'farhan',
+    'roll' => 0123456
+  }
+
+  p inst_section['name']
+ - a hash by default returns nil when indexed by a key it doesn’t contain.
+ - nil means false when used in conditional expressions
+ - Sometimes we’ll want to change this default.This is easily done by specifying a default value when we create a new, empty hash.
+    histogram = Hash.new(0)
+
+  Symbols
+  --------
+   - when programming, we need to create a name for something significant.
+    NORTH = 1
+    EAST = 3
+    walk(NORTH)
+   - Ruby offers a cleaner alternative. Symbols are simply constant names that you don’t have to predeclare and that are guaranteed to be unique.
+
+   def walk(direction)
+      if direction == :north
+          # ...
+      end
+  end
+ - Symbols are frequently used as keys in hashes
+    inst_section = {
+              :cello => 'string'
+    }
+
+    inst_section[:cello]
+
+ - symbols are so frequently used as hash keys that Ruby has a shortcut syntax .
+    inst_section = {
+          cello: 'string'
+      }
+
+  Control Structures
+  ----------------------
+ -
+  today = Time.now
+  if today.saturday?
+    puts "Do chores around the house"
+  elsif today.sunday?
+    puts "Relax"
+  else
+    puts "Go to work"
+  end
+
+  square = 4
+  while square < 1000
+    square = square*square
+  end
+
+  Regular expression
+  ---------------------
+
+  newline = line.sub(/Perl/, 'Ruby') # replace first 'Perl' with 'Ruby'
+  newerline = newline.gsub(/Python/, 'Ruby') # replace every 'Python' with 'Ruby'
+
+  Blocks and Iterators
+--------------------------
+code block
+{ puts "Hello" }
+
+This is also a code block:
+  do
+    club.enroll(person)
+    person.socialize
+  end
+
+
+ - a block is associate it with a call to a method. You do this by putting the
+start of the block at the end of the source line containing the method call.
+  greet { puts "Hi" }
+e.g -
+  def call_block
+    puts "start of method"
+    yield
+    puts 'end of method'
+  end
+
+  call_block { puts 'hi'}
+
+   - Code blocks are used throughout the Ruby library to implement iterators, which are methods
+ that return successive elements from some kind of collection
+
+ def who_says_what
+  yield("Dave", "hello")
+  yield("Andy", "goodbye")
+end
+
+who_says_what {|person, phrase| puts "#{person} says #{phrase}"}
+
+('a'..'e').each {|char| print char }
+
+  Reading and ’Riting
+  ------------------
+  puts writes its arguments with a newline after each; print also writes its arguments but with no newline
