@@ -38,4 +38,7 @@ p b1 #print - ISBN: isbn1,price: 120.0
   #Ruby provides a shortcut for creating these simple attribute-setting methods
    - attr_reader
    - attr_writer
-   - attr_accessor
+   - attr_accessor # both a reader and a writer for a given attribute
+
+  Virtual Attributes
+  -------------------

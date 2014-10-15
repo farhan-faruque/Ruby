@@ -1,6 +1,6 @@
 class BooksInStock
 
-  attr_reader :isbn, :price
+  attr_accessor :price,:isbn
 
   def initialize(isbn,price)
     @isbn = isbn
@@ -11,8 +11,8 @@ class BooksInStock
     "ISBN: #{@isbn},price: #{@price}"
   end
 
-  def isbn=(new_isbn)
-    @isbn = new_isbn
+  def price_in_cents
+    @price + 100
   end
 
 end
@@ -23,5 +23,6 @@ end
 
  b1.isbn = 'new isbn'
  puts b1.isbn
- p b2
+ p b2.price_in_cents
+ p b2.price
  p b3
