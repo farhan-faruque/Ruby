@@ -44,10 +44,5 @@ h.length # => 3
 h['dog'] # => "canine"
 
 - rom Ruby 1.9, there is a new shortcut you can use if the keys are symbols
- h = { :dog => 'canine', :cat => 'feline', :donkey => 'asinine' }
- - moving the colon to the end of the symbol and dropping the =>:
- h = { dog: 'canine', cat: 'feline', donkey: 'asinine' }
-
-
 
 
