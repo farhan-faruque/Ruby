@@ -9,5 +9,9 @@ Rails.application.routes.draw do
   match "browse/:folder_id/new_folder" => "folders#new", as: "new_sub_folder",via: [:get,:post]
   match "browse/:folder_id/new_file" => "assets#new", :as => "new_sub_file",via: [:get,:post]
 
+  #for renaming a folder
+  match "browse/:folder_id/rename" => "folders#edit", :as => "rename_folder",via: [:get,:put]
+
+
   root :to => "home#index"
 end

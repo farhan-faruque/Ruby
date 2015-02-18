@@ -25,6 +25,7 @@ class FoldersController < ApplicationController
 
   # GET /folders/1/edit
   def edit
+    @current_folder = @folder.parent
   end
 
   # POST /folders
@@ -45,35 +46,55 @@ class FoldersController < ApplicationController
 
   end
 
-
   # PATCH/PUT /folders/1
   # PATCH/PUT /folders/1.json
   def update
-    respond_to do |format|
-      if @folder.update(folder_params)
-        format.html { redirect_to @folder, notice: 'Folder was successfully updated.' }
-        format.json { render :show, status: :ok, location: @folder }
+
+    if @folder.update(folder_params)
+      flash[:notice] = "Successfully Renamed folder."
+      @parent_folder = @folder.parent
+      if @folder.parent
+        redirect_to browse_path(@folder.parent)
       else
-        format.html { render :edit }
-        format.json { render json: @folder.errors, status: :unprocessable_entity }
+        redirect_to root_url
       end
+    else
+      render :action => 'new'
     end
+    # respond_to do |format|
+    #   if @folder.update(folder_params)
+    #     format.html { redirect_to @folder, notice: 'Folder was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @folder }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @folder.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /folders/1
   # DELETE /folders/1.json
   def destroy
+    @parent_folder = @folder.parent
+
     @folder.destroy
-    respond_to do |format|
-      format.html { redirect_to folders_url, notice: 'Folder was successfully destroyed.' }
-      format.json { head :no_content }
+    flash[:notice] = "Successfully deleted the folder and all the contents inside."
+    if @parent_folder
+      redirect_to browse_path(@parent_folder)
+    else
+      redirect_to root_url
     end
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_folder
-      @folder = current_user.folders.find(params[:id])
+      if params[:folder_id]
+        @folder = current_user.folders.find(params[:folder_id])
+      else
+        @folder = current_user.folders.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

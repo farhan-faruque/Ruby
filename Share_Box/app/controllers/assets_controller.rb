@@ -60,10 +60,14 @@ class AssetsController < ApplicationController
   # DELETE /assets/1
   # DELETE /assets/1.json
   def destroy
+    @parent_folder = @asset.folder
     @asset.destroy
-    respond_to do |format|
-      format.html { redirect_to assets_url, notice: 'Asset was successfully destroyed.' }
-      format.json { head :no_content }
+    flash[:notice] = "Successfully deleted the file."
+
+    if @parent_folder
+      redirect_to browse_path(@parent_folder)
+    else
+      redirect_to root_url
     end
   end
 
