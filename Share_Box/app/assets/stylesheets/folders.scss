@@ -2,24 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .folder  {
-  background:image-url('folder.png') no-repeat scroll left center transparent;
+  //background:image-url('folder.png') no-repeat scroll left center transparent;
 }
 
 .file {
-  background:image-url('file.png') no-repeat scroll left center transparent;
+  //background:image-url('file.png') no-repeat scroll left center transparent;
 }
 .folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover  {
   border:1px solid #DFDFDF;
 }
 .folder.asset_details:hover  {
-  background:image-url('folder.png') no-repeat scroll left center #EFEFEF;
+  //background:image-url('folder.png') no-repeat scroll left center #EFEFEF;
 }
 .shared_folder  {
-  background:image-url('shared_folder.png') no-repeat scroll left center transparent;
+  //background:image-url('shared_folder.png') no-repeat scroll left center transparent;
 }
 .shared_folder.asset_details:hover  {
-  background:image-url('shared_folder.png') no-repeat scroll left center #EFEFEF;
+  //background:image-url('shared_folder.png') no-repeat scroll left center #EFEFEF;
 }
 .file.asset_details:hover  {
-  background:image-url('file.png') no-repeat scroll left center #EFEFEF;
+  //background:image-url('file.png') no-repeat scroll left center #EFEFEF;
 }

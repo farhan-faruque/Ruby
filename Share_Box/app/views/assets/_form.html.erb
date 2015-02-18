@@ -15,6 +15,9 @@
     <%= f.label :uploaded_file, "File" %><br />
     <%= f.file_field :uploaded_file %>
   </div>
+    <div class="field">
+      <%= f.hidden_field :folder_id %>
+    </div>
   <div class="actions">
     <%= f.submit 'Upload'%>
   </div>
