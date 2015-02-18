@@ -36,6 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 #for uploading files
 gem "paperclip",github: 'thoughtbot/paperclip'
+#For nested folders
+gem "acts_as_tree"
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console

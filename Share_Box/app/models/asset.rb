@@ -1,5 +1,6 @@
 class Asset < ActiveRecord::Base
   belongs_to :user
+  belongs_to :folder
   #attr_accessor :uploaded_file
 
   has_attached_file :uploaded_file
