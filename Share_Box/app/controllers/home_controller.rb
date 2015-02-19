@@ -35,6 +35,7 @@ class HomeController < ApplicationController
       @shared_folder.message = params[:message]
       @shared_folder.save
 
+      UserMailer.invitation_to_share(@shared_folder).deliver_now
     end
     respond_to do |format|
       format.js {
