@@ -9,7 +9,7 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ *= require jquery-ui.css
  *= require_tree .
  *= require_self
  */
@@ -44,4 +44,3 @@ body {
 #login_user_status {
     float:right;
 }
-

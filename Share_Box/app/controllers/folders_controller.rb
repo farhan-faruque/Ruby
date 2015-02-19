@@ -88,17 +88,17 @@ class FoldersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_folder
-      if params[:folder_id]
-        @folder = current_user.folders.find(params[:folder_id])
-      else
-        @folder = current_user.folders.find(params[:id])
-      end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_folder
+    if params[:folder_id]
+      @folder = current_user.folders.find(params[:folder_id])
+    else
+      @folder = current_user.folders.find(params[:id])
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def folder_params
-      params.require(:folder).permit(:name, :parent_id, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def folder_params
+    params.require(:folder).permit(:name, :parent_id, :user_id)
+  end
 end

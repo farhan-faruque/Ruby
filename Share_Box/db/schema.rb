@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218115317) do
+ActiveRecord::Schema.define(version: 20150219042236) do
 
   create_table "assets", force: :cascade do |t|
     t.integer  "user_id",                    limit: 4
@@ -37,6 +37,20 @@ ActiveRecord::Schema.define(version: 20150218115317) do
 
   add_index "folders", ["parent_id"], name: "index_folders_on_parent_id", using: :btree
   add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
+
+  create_table "shared_folders", force: :cascade do |t|
+    t.integer  "user_id",        limit: 4
+    t.string   "shared_email",   limit: 255
+    t.integer  "shared_user_id", limit: 4
+    t.integer  "folder_id",      limit: 4
+    t.string   "message",        limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "shared_folders", ["folder_id"], name: "index_shared_folders_on_folder_id", using: :btree
+  add_index "shared_folders", ["shared_user_id"], name: "index_shared_folders_on_shared_user_id", using: :btree
+  add_index "shared_folders", ["user_id"], name: "index_shared_folders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
